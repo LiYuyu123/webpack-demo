@@ -1,4 +1,15 @@
 import x from './x.js'
-console.log(x)
-console.log('hi')
-console.log('2')
+import png from './image/1.png'
+console.log(png)
+app1.innerHTML=`<img src="${png}">`
+
+const button=document.createElement('button')
+button.innerText='懒加载'
+// 懒加载
+button.onclick=()=>{
+    const promise=import('./lazy.js')
+    promise.then((module)=>{
+       module.default()
+    },()=>{})
+}
+document.body.appendChild(button)
